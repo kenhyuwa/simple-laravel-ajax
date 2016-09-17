@@ -1,0 +1,7 @@
+1. run composer install
+2. setting koneksi file .env
+3. buat database dengan nama "belajar"
+4. run "php atisan migrate"
+5. run "php artisan serve"
+6. buka di browser "localhost:8000"
+hanya simple-ajax buat belajar
