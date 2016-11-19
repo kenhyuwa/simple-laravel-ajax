@@ -95,6 +95,9 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::get('deleted/{slugs}', function($slugs) {
 		$id = base64_decode($slugs);
 		$deleted = App\User::find($id);
+		if($id == auth()->user()->id) {
+			return redirect()->back();
+		}
 		$success = $deleted->delete();
 		if($success)
 		{
@@ -104,6 +107,9 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('delete/{slugs}', function($slugs) {
 		$id = base64_decode($slugs);
 		$deleted = App\User::find($id);
+		if($id == auth()->user()->id) {
+			return response()->json(['status' => 'false']);
+		}
 		$success = $deleted->delete();
 		if($success)
 		{
